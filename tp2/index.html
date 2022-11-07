@@ -6,7 +6,7 @@
         <title>Formulaire</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="style.css" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
@@ -25,19 +25,33 @@
         <!--<script src="js/main.js"></script>-->
     </head>
     <body>        
-        <h1>Saisie d'une fiche "personne"</h1>
+        <h1>TP #2</h1>
         <!-- Add your site or application content here -->
         <!--p>Hello world! This is HTML5 Boilerplate.</p-->
         <!--img src="../galilee.png" alt="Logo Galilee"/-->
-        <form>
-            <label for="fname">Prénom:</label>
-            <input type="text" id="fname" name="fname" value="Meriem"><br>
-            <label for="lname">Nom:  </label>
-            <input type="text" id="lname" name="lname" value="Bekkouche"><br>
-            <label for="fname">Adresse:</label>
-            <input type="text" id="fname" name="fname" value="Adresse"><br>
-            <label for="lname">Mail:</label>
-            <input type="text" id="lname" name="lname" value="@">
+        <form  action="action.html" method="get">
+              
+                
+           <p> <label for="firstname">Prénom:</label>   
+            <input type="text" id="firstname" name="firstname"   required minlength="2"  maxlength="20">
+            <span class="icon-ok">✔</span> </p><br>
+           
+          
+            <p><label for="lname">Nom:  </label>
+            <input type="text" id="lname" name="lname"  required minlength="2"  maxlength="20"> <span class="icon-ok">✔</span> </p><br>
+      
+            <p><label for="Date">Date de naissance:  </label>
+                <input type="date" id="Date" name="Date"  required minlength="2"  maxlength="20"> <span class="icon-ok">✔</span> </p><br>
+           
+                <p><label for="address">Adresse:</label>
+            <input type="text" id="address" name="address"  required minlength="2"  maxlength="20"> <span class="icon-ok">✔</span> </p><br>
+       
+            <p><label for="email">Mail:</label>
+            <input type="text" id="email" name="email"  required minlength="2"  maxlength="20"> <span class="icon-ok">✔</span> </p>
+            
+             <p>
+              <center>  <input  class="btn-primary" type="submit" value="envoyer"> </center></p>
+
           </form>
     </body>
 </html>
