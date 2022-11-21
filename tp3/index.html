@@ -9,7 +9,12 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-
+           <!-- CSS boostrap -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+         
+          <!-- librairie Javascript de boostrap pour pouvoir utiliser les composants interactifs (modal https://getbootstrap.com/docs/5.1/components/modal/ , collapse...) -->
+         <script src="js/bootstrap.bundle.js"></script>
+         <script src="js/form-validation.js"></script>
         <style>
           body{
               background-color: #e9ebee;              
@@ -24,10 +29,75 @@
         <!--<link rel="stylesheet" href="style.css">-->
         <!--<script src="main.js"></script>-->
     </head>
-    <body>        
+    <body>       
+        <div class="container">
         <h1>tp3</h1>
         <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
+        <p>Avec bootstrap5</p>
+        <!--<img src="../galilee.png" alt="Logo Galilee"/>-->
+            <form>
+                <div class="col-md-6">
+                  <label for="lname" class="form">Nom</label>
+                  <input type="text" class="form-control" id="lname">
+                </div>
+                <div class="col-md-6">
+                  <label for="firstname" class="form-label">Prénom</label>
+                  <input type="text" class="form-control" id="firstname">
+                </div>
+                <div class="col-md-6">
+                  <label for="Date" class="form-label">datedeNaissance</label>
+                  <input type="date" class="form-control" id="Date">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputAddress" class="form-label">Adresse</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4">
+                </div></br>
+              
+              
+
+              
+             
+                  <button type="submit" id ="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+              </form>
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body"> <p>
+                        Vous êtes né le
+                        et habité(e)
+                        
+                      </p></div>
+                      <div class="modal-footer">
+                        <button type="button"class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                         
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 
+                <script>
+                   document.forms[0].addEventListener("submit", function(evenement) { 
+            if (document.getElementById("email").value == "") {
+                evenement.preventDefault();
+                alert("Tapez un email valable pour avoir une réponse.");
+                document.getElementById("email").focus();
+            }
+            else if (document.getElementById("message").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper un message !");
+                document.getElementById("message").focus();
+            }
+        });
+                  </script>
+                
     </body>
 </html>
