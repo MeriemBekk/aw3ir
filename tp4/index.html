@@ -1,103 +1,109 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP3</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-           <!-- CSS boostrap -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-         
-          <!-- librairie Javascript de boostrap pour pouvoir utiliser les composants interactifs (modal https://getbootstrap.com/docs/5.1/components/modal/ , collapse...) -->
-         <script src="js/bootstrap.bundle.js"></script>
-         <script src="js/form-validation.js"></script>
-         <script> function init() { console.log("init");
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>TP4</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-          //get a handle to my form var myform = document.getElementById("myform");
-          
-          //listen for submit myform.addEventListener("submit", function(e) { console.log("submit");
-          
-          var username = document.getElementById("lname").value;  var errors = '';
-          
-          if(username == '') errors += 'Please specify a username.\n';
-          
-          if(errors != '') { alert(errors); e.preventDefault(); }
-          
-          }); } </script>
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>       
-        <div class="container">
-        <h1>tp4</h1>
-        <!-- Add your site or application content here -->
-        <p>Avec bootstrap5</p>
-        <!--<img src="../galilee.png" alt="Logo Galilee"/>-->
-            <form>
-                <div class="col-md-6">
-                  <label for="lname" class="form">Nom</label>
-                  <input type="text" class="form-control" id="lname" >
-                </div>
-                <div class="col-md-6">
-                  <label for="firstname" class="form-label">Prénom</label>
-                  <input type="text" class="form-control" id="firstname">
-                </div>
-                <div class="col-md-6">
-                  <label for="Date" class="form-label">datedeNaissance</label>
-                  <input type="date" class="form-control" id="Date">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputAddress" class="form-label">Adresse</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4">
-                </div></br>
-              
-              
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <!-- CSS boostrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
 
-              
-             
-                  <button type="submit" id ="submit" class="btn btn-primary">Ajouter</button>
-                </div>
-              </form>
-                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body"> <p>
-                        Vous êtes né le
-                        et habité(e)
-                        
-                      </p></div>
-                      <div class="modal-footer">
-                        <button type="button"class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                         
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                 
-                
-                
-    </body>
+  <!-- librairie Javascript de boostrap pour pouvoir utiliser les composants interactifs (modal https://getbootstrap.com/docs/5.1/components/modal/ , collapse...) -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/form-validation.js"></script>
+  <script src="gps.js"></script>
+  
+
+  <style>
+    body {
+      background-color: #e9ebee;
+      font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+      font-size: 16px;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+  </style>
+
+  <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
+  <!--<link rel="stylesheet" href="style.css">-->
+  <!--<script src="main.js"></script>-->
+</head>
+
+<body>
+  <div class="container">
+    <h1>tp4</h1>
+    <h1>Ajouter un contact</h1>
+    <!-- Add your site or application content here -->
+    <p>Avec bootstrap5</p>
+    <!--<img src="../galilee.png" alt="Logo Galilee"/>-->
+    <form>
+      <div class="col-md-6">
+        <label for="lname" class="col-sm-2 col-form-label">Nom</label>
+        <div >
+          <input type="text" class="form-control" id="lname" onkeypress="calcNbChar(this.id)"/>
+          <span></span> <!-- balise mise à jour dynamiquement en JS -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="firstname" class="form-label">Prénom</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="firstname" onkeypress="calcNbChar(this.id)" />
+          <span></span> <!-- balise mise à jour dynamiquement en JS -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="Date" class="form-label">datedeNaissance</label>
+        <input type="date" class="form-control" id="Date">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Adresse</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <button type="button"
+          id="submitGPS" class="btn btn-primary" onclick="getLocation()">GPS</button>
+
+          <div id="map"> </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4">
+      </div></br>
+
+
+
+
+
+      <button type="submit" id="submit" class="btn btn-primary">Ajouter</button>
+  </div>
+  </form>
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Vous êtes né le
+            et habité(e)
+
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
 </html>
