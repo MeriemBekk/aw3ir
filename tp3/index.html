@@ -15,6 +15,19 @@
           <!-- librairie Javascript de boostrap pour pouvoir utiliser les composants interactifs (modal https://getbootstrap.com/docs/5.1/components/modal/ , collapse...) -->
          <script src="js/bootstrap.bundle.js"></script>
          <script src="js/form-validation.js"></script>
+         <script> function init() { console.log("init");
+
+          //get a handle to my form var myform = document.getElementById("myform");
+          
+          //listen for submit myform.addEventListener("submit", function(e) { console.log("submit");
+          
+          var username = document.getElementById("lname").value;  var errors = '';
+          
+          if(username == '') errors += 'Please specify a username.\n';
+          
+          if(errors != '') { alert(errors); e.preventDefault(); }
+          
+          }); } </script>
         <style>
           body{
               background-color: #e9ebee;              
@@ -38,7 +51,7 @@
             <form>
                 <div class="col-md-6">
                   <label for="lname" class="form">Nom</label>
-                  <input type="text" class="form-control" id="lname">
+                  <input type="text" class="form-control" id="lname" >
                 </div>
                 <div class="col-md-6">
                   <label for="firstname" class="form-label">Prénom</label>
@@ -84,20 +97,7 @@
                   </div>
                 </div>
                  
-                <script>
-                   document.forms[0].addEventListener("submit", function(evenement) { 
-            if (document.getElementById("email").value == "") {
-                evenement.preventDefault();
-                alert("Tapez un email valable pour avoir une réponse.");
-                document.getElementById("email").focus();
-            }
-            else if (document.getElementById("message").value == "") {
-                evenement.preventDefault();
-                alert("Pensez à taper un message !");
-                document.getElementById("message").focus();
-            }
-        });
-                  </script>
+                
                 
     </body>
 </html>
