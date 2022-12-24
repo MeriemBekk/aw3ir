@@ -10,41 +10,45 @@ window.onload = function () {   // ce code est exécuter une fois que toute la p
 
 
 
-var myModal = new bootstrap.Modal(document.getElementById('myModal'));
 
 
-const lname = document.querySelector("#lname");
-const Date = document.querySelector("#Date");
 
-document.querySelector("#inputAddress")
-document.querySelector("#inputAddress").value;
-document.querySelector(".modal-title").textContent = "Bienvenue Meriem"
-document.querySelector(".modal-body").innerHTML = '<img src="https://maps.googleapis.com/maps/api/staticmap?markers=Paris&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"/>'  
-
-
-document.querySelector("#submitGPS").addEventListener("click", function(event){
+  var  myModal = new bootstrap.Modal(document.getElementById('myModal'));
+ 
+  var myButton = document.getElementById('submit');
+  myButton.addEventListener('click', () => {myModal.show();
+   
+      
+  
+});
+document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log( "click" );
-
-}); 
-
-
-function init() { 
-  console.log("init");
-
- var myform = document.getElementById("#form");
-
-myform.addEventListener("submit", function(e) { console.log("submit");
-var username = document.getElementById("#lname").value;  var errors = '';
-          
-if(username == '') errors += 'Please specify a username.\n';
-
-if(errors != '') { alert(errors); e.preventDefault(); }
-
-}); };
+  console.log("form submitted!");
+});
 
 
-};
-function calcNbChar(id) {
-  document.querySelector(`#${id} + span`).textContent = document.querySelector(`#${id}`).value.length;
-}
+  //const lname = document.querySelector("#lname");
+  //const Date = document.querySelector("#Date");
+  
+  
+  document.querySelector("#inputAddress")
+  document.querySelector("#inputAddress").value;
+  document.querySelector(".modal-title").textContent = "Bienvenue Meriem";
+  
+    
+
+  
+  document.querySelector("#submitGPS").addEventListener("click", function(event){
+    event.preventDefault();
+    console.log( "click" );
+   
+  });
+  
+  
+  
+  
+  
+
+  function calcNbChar(id) {
+    document.querySelector(`#${id} + span`).textContent = document.querySelector(`#${id}`).value.length;
+  }}
