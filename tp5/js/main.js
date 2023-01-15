@@ -1,11 +1,12 @@
 var app;
 window.onload = function () {
+
     app = new Vue({
         el: '#weatherApp', // cible l'élement HTML où nous pourrons utiliser toutes les variables ci-dessous
         data: {
             // sera utilisé comme indicateur de chargement de l'application
             loaded: false,
-
+            
             // cityName, variable utilisé dans le formulaire via v-model
             formCityName: '',
 
@@ -45,12 +46,59 @@ window.onload = function () {
 
                 console.log('formCityName:',this.formCityName);
                 // A compléter dans la suite du TP  
+                this.cityList.push({name : this.formCityName});
+
+                // remise à zero du message affiché sous le formulaire
+                this.messageForm = '';
+
+                // remise à zero du champ de saisie
+                this.formCityName = '';
+                //Si la ville existe déjà dans la liste cityList, afficher un message via la variable this.messageForm = 'existe déjà';
+                this.messageForm = 'existe déjà';
+
+            //}
+            },
+            isCityExist: function (_cityName){
+
+                // la méthode 'filter' retourne une liste contenant tous les items ayant un nom égale à _cityName
+                // doc. sur filter : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter
+                if( this.cityList.filter(item => 
+                                            item.name.toUpperCase() == _cityName.toUpperCase()
+                                        ).length>0){
+                    return true;
+                }else{
+                    return false;
+                }
             },
             remove: function (_city) {      
-                // A compléter dans la suite du TP          
+               // on utilise 'filter' pour retourne une liste avec tous les items ayant un nom différent de _city.name
+    this.cityList = this.cityList.filter(item => item.name != _city.name);        
             }, 
             meteo: function (_city) {  
-                // A compléter dans la suite du TP              
+                this.cityWeatherLoading = true;
+
+                // appel AJAX avec fetch
+                fetch('https://api.openweathermap.org/data/2.5/weather?q='+_city.name+'&units=metric&lang=fr&apikey=a02d32f5fadec22653571ded0dcb343f')
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(json) {
+                        app.cityWeatherLoading = false;
+            
+                        // test du code retour
+                        // 200 = OK
+                        // 404 = city not found 
+                        if(json.cod === 200){
+                            // on met la réponse du webservice dans la variable cityWeather
+                            app.cityWeather = json;
+                            app.message = null;
+                        }else{
+                            app.cityWeather = null;
+                            app.message = 'Météo introuvable pour ' + _city.name 
+                                            + ' (' + json.message+ ')';
+                        }        
+                    });        
+                             
             }
         }
     });
